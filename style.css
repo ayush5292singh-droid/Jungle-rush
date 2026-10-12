@@ -1,0 +1,357 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: #07130f;
+  color: #fff;
+  overflow: hidden;
+  width: 100%;
+  height: 100dvh;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+#game {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 420px;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(#78bba5, #163d2d 75%);
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1;
+  outline: none;
+}
+
+#hud {
+  position: absolute;
+  z-index: 3;
+  inset: 0 0 auto;
+  padding: max(18px, env(safe-area-inset-top)) 18px 0;
+  pointer-events: none;
+}
+
+.brand {
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px #001a11;
+}
+
+.brand span {
+  color: #a7ff6b;
+}
+
+.stats {
+  display: flex;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.stat {
+  min-width: 76px;
+  padding: 10px 13px;
+  border: 1px solid #ffffff22;
+  border-radius: 14px;
+  background: #061710a8;
+  backdrop-filter: blur(12px);
+}
+
+.stat small,
+.results small {
+  display: block;
+  color: #a6c5b5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+
+#pauseBtn {
+  pointer-events: auto;
+  position: absolute;
+  top: max(17px, env(safe-area-inset-top));
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ffffff35;
+  border-radius: 13px;
+  background: #061710bd;
+  font-size: 20px;
+}
+
+#speed {
+  display: inline-block;
+  margin-top: 9px;
+  padding: 7px 11px;
+  color: #d4ffbe;
+  background: #061710b5;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.screen {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 22px 75px;
+  background: linear-gradient(180deg, #03160b30, #03140bc9);
+  backdrop-filter: blur(2px);
+  animation: appear .4s ease both;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.eyebrow {
+  color: #c6ff9e;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 17px;
+}
+
+h1 {
+  font-size: clamp(43px, 10vw, 82px);
+  line-height: .88;
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -3px;
+  text-shadow: 0 7px 35px #00150b;
+}
+
+h1 span {
+  color: #baff77;
+}
+
+h2 {
+  font-size: clamp(37px, 8vw, 64px);
+  font-weight: 1000;
+  letter-spacing: -2px;
+}
+
+.screen p {
+  margin-top: 20px;
+  color: #d3e6d9;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.howto {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 27px 0;
+  width: 100%;
+  max-width: 390px;
+}
+
+.howto div {
+  flex: 1;
+  max-width: 115px;
+  padding: 13px 5px;
+  border: 1px solid #ffffff22;
+  border-radius: 14px;
+  background: #0b261bd9;
+}
+
+.howto b {
+  display: block;
+  font-size: 22px;
+  color: #c8ff9f;
+}
+
+.howto small {
+  display: block;
+  margin-top: 8px;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  color: #c1d6c7;
+}
+
+.primary,
+.secondary {
+  width: min(100%, 310px);
+  min-height: 54px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+  transition: transform .15s, filter .15s;
+}
+
+.primary {
+  color: #10200b;
+  background: linear-gradient(120deg, #d9ff9a, #91ef62);
+  box-shadow: 0 8px 35px #83f45132;
+}
+
+.primary span {
+  margin-left: 13px;
+}
+
+.secondary {
+  margin-top: 10px;
+  background: #ffffff13;
+  border: 1px solid #ffffff30;
+}
+
+.primary:active,
+.secondary:active {
+  transform: scale(.97);
+  filter: brightness(.92);
+}
+
+.footnote {
+  margin-top: 17px;
+  color: #d2e7d7a8;
+  font-size: 9px;
+  letter-spacing: 1.7px;
+}
+
+.results {
+  display: flex;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.results div {
+  min-width: 130px;
+  padding: 18px;
+  border-radius: 15px;
+  border: 1px solid #ffffff20;
+  background: #092319d9;
+}
+
+.results strong {
+  display: block;
+  margin-top: 9px;
+  font-size: 28px;
+}
+
+#touchControls {
+  position: absolute;
+  z-index: 4;
+  bottom: max(17px, env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+#touchControls button {
+  pointer-events: auto;
+  width: 49px;
+  height: 49px;
+  border: 1px solid #ffffff42;
+  border-radius: 16px;
+  background: #061710ad;
+  backdrop-filter: blur(12px);
+  font-size: 23px;
+}
+
+#touchControls button:active {
+  background: #a8f36b;
+  color: #10200b;
+}
+
+#toast {
+  position: absolute;
+  z-index: 6;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e4ffb8;
+  font-size: 20px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 20px #000;
+  pointer-events: none;
+}
+
+#loading {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #07130f;
+  color: #c6ff9e;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  transition: opacity .4s;
+}
+
+#loading.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 430px) {
+  #hud { padding-left: 12px; padding-right: 12px; }
+  .stats { gap: 6px; }
+  .stat { min-width: 0; padding: 9px 11px; }
+  .stat strong { font-size: 17px; }
+  #pauseBtn { right: 12px; }
+  #touchControls { padding: 0 13px; }
+  #touchControls button { width: 45px; height: 45px; }
+}
+
+@media (max-height: 570px) {
+  .screen { padding-top: 65px; padding-bottom: 60px; }
+  .eyebrow { margin-bottom: 10px; }
+  .screen p { margin-top: 10px; }
+  .howto { margin: 14px 0; }
+  .howto div { padding: 8px 4px; }
+  .footnote { margin-top: 9px; }
+}
