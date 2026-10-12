@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#07130f">
+  <title>Jungle Rush 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <div id="hud">
+      <div class="brand">🌿 JUNGLE RUSH <span>3D</span></div>
+      <div class="stats">
+        <div class="stat"><small>SCORE</small><strong id="score">0</strong></div>
+        <div class="stat"><small>COINS</small><strong id="coins">0</strong></div>
+        <div class="stat"><small>BEST</small><strong id="best">0</strong></div>
+      </div>
+      <button id="pauseBtn" aria-label="Pause game">Ⅱ</button>
+      <div id="speed">SPEED 1x</div>
+    </div>
+
+    <div id="loading">GENERATING JUNGLE...</div>
+
+    <div class="screen" id="startScreen">
+      <div class="eyebrow">YOUR ADVENTURE BEGINS</div>
+      <h1>JUNGLE<br><span>RUSH 3D</span></h1>
+      <p>Run through the lost jungle.<br>Dodge obstacles. Collect treasures.</p>
+      <div class="howto">
+        <div><b>← →</b><small>CHANGE LANE</small></div>
+        <div><b>↑</b><small>JUMP</small></div>
+        <div><b>↓</b><small>SLIDE</small></div>
+      </div>
+      <button class="primary" id="startBtn">START RUNNING <span>➜</span></button>
+      <div class="footnote">SWIPE TO MOVE ON MOBILE</div>
+    </div>
+
+    <div class="screen hidden" id="pauseScreen">
+      <div class="eyebrow">TAKE A BREATHER</div>
+      <h2>PAUSED</h2>
+      <p>Your adventure is waiting.</p>
+      <button class="primary" id="resumeBtn">RESUME RUN</button>
+      <button class="secondary" id="restartPauseBtn">RESTART</button>
+    </div>
+
+    <div class="screen hidden" id="overScreen">
+      <div class="eyebrow">RUN COMPLETE</div>
+      <h2>GAME OVER</h2>
+      <p>The jungle awaits your return.</p>
+      <div class="results">
+        <div><small>YOUR SCORE</small><strong id="finalScore">0</strong></div>
+        <div><small>COINS COLLECTED</small><strong id="finalCoins">0</strong></div>
+      </div>
+      <button class="primary" id="againBtn">RUN AGAIN ↻</button>
+    </div>
+
+    <div id="touchControls">
+      <button data-move="left" aria-label="Move left">←</button>
+      <button data-move="jump" aria-label="Jump">↑</button>
+      <button data-move="slide" aria-label="Slide">↓</button>
+      <button data-move="right" aria-label="Move right">→</button>
+    </div>
+
+    <div id="toast"></div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
